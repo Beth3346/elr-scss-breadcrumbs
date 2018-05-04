@@ -1,0 +1,9 @@
+@import 'src/main';
+
+.elr-breadcrumbs {
+  @include elr-breadcrumbs;
+}
+
+.elr-breadcrumbs-arrow {
+  @include elr-breadcrumbs-arrow;
+}

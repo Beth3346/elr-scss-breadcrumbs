@@ -1,0 +1,237 @@
+// Breadcrumbs
+@mixin elr-triangle($config: ()) {
+  $config:extend(
+    (direction: 'top', base: 50px, height: 'half', color: #ccc),
+    $config
+  );
+
+  $direction: map-get($config, direction);
+  $base: map-get($config, base);
+  $height: map-get($config, height);
+  $color: map-get($config, color);
+
+  @if (
+    $direction ==
+      'top' or
+      $direction ==
+      'right' or
+      $direction ==
+      'bottom' or
+      $direction ==
+      'left'
+  ) {
+    @if ($height == 'half') {
+      $height: ($base / 2);
+    } @else if ($height == auto) {
+      $height: $base;
+    }
+  } @else if
+    (
+      $direction ==
+        'top-left' or
+        $direction ==
+        'top-right' or
+        $direction ==
+        'bottom-left' or
+        $direction ==
+        'bottom-right'
+    )
+  {
+    @if ($height == 'half' or $height == auto) {
+      $height: ($base / 2);
+    }
+  }
+  // width is divided by 2 because it's used twice !
+  $base: ($base / 2);
+  width: 0;
+  height: 0;
+
+  @if ($direction == 'top') {
+    // border-top
+    border-right: $base solid transparent;
+    border-bottom: $height solid $color;
+    border-left: $base solid transparent;
+  } @else if ($direction == 'bottom') {
+    border-top: $height solid $color;
+    border-right: $base solid transparent;
+    // border-bottom
+    border-left: $base solid transparent;
+  } @else if ($direction == 'left') {
+    border-top: $base solid transparent;
+    border-right: $height solid $color;
+    border-bottom: $base solid transparent;
+    // border-left
+  } @else if ($direction == 'right') {
+    border-top: $base solid transparent;
+    // border-right
+    border-bottom: $base solid transparent;
+    border-left: $height solid $color;
+  } @else if ($direction == 'top-left') {
+    border-top: $height solid $color;
+    border-right: $base solid transparent;
+    border-bottom: $height solid transparent;
+    border-left: $base solid $color;
+  } @else if ($direction == 'top-right') {
+    border-top: $height solid $color;
+    border-right: $base solid $color;
+    border-bottom: $height solid transparent;
+    border-left: $base solid transparent;
+  } @else if ($direction == 'bottom-left') {
+    border-top: $height solid transparent;
+    border-right: $base solid transparent;
+    border-bottom: $height solid $color;
+    border-left: $base solid $color;
+  } @else if ($direction == 'bottom-right') {
+    border-top: $height solid transparent;
+    border-right: $base solid $color;
+    border-bottom: $height solid $color;
+    border-left: $base solid transparent;
+  }
+}
+
+@mixin elr-breadcrumbs($config: ()) {
+  $config:extend((separator: '>', color: #1976d2), $config);
+  $separator: map-get($config, separator);
+  $color: map-get($config, color);
+
+  margin: 0;
+  padding: 0;
+  display: flex;
+
+  li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &::after {
+      content: $separator;
+      padding-left: 2px;
+      padding-right: 4px;
+    }
+
+    &:last-child {
+      &::after {
+        content: '';
+      }
+    }
+
+    &::after,
+    &.active {
+      color: $color;
+    }
+
+    &.active {
+      font-weight: 700;
+
+      > a {
+        text-decoration: underline;
+      }
+    }
+
+    a {
+      color: $color;
+      display: inline;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@mixin elr-breadcrumbs-arrow($config: ()) {
+  $config:extend(
+    (
+      color: lighten(#1976d2, 10%),
+      active-color: #1976d2,
+      text-color: #fff,
+      border-color: #1976d2
+    ),
+    $config
+  );
+
+  $color: map-get($config, color);
+  $active-color: map-get($config, active-color);
+  $text-color: map-get($config, text-color);
+  $border-color: map-get($config, border-color);
+
+  margin: 0;
+  padding: 0;
+  display: flex;
+
+  li {
+    padding: 0;
+    margin: 0;
+    background-color: $color;
+    color: $text-color;
+    display: flex;
+    height: 37px;
+    text-align: center;
+    position: relative;
+
+    &::before,
+    &::after {
+      @include elr-triangle(
+        $config: (direction: 'right', base: 37px, height: 18px, color: $color)
+      );
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+    }
+
+    &::before {
+      right: -18px;
+      z-index: 1;
+      border-left-color: $border-color;
+    }
+
+    &::after {
+      right: -17px;
+      z-index: 2;
+    }
+
+    &:hover {
+      background-color: lighten($color, 10%);
+
+      &::after {
+        border-left-color: lighten($color, 10%);
+      }
+    }
+
+    &.active {
+      background-color: $active-color;
+
+      &::after {
+        border-left-color: $active-color;
+        right: -18px;
+      }
+    }
+
+    &:first-child a {
+      padding-left: 20px;
+    }
+
+    &.active,
+    a {
+      font-size: to-rems(14px);
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-right: 15px;
+      padding-left: 30px;
+      line-height: 36px;
+    }
+
+    a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      height: 100%;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
