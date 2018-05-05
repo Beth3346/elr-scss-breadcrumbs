@@ -125,6 +125,10 @@
 
       > a {
         text-decoration: underline;
+
+        &:hover {
+          cursor: default;
+        }
       }
     }
 
@@ -133,6 +137,7 @@
       display: inline;
       text-decoration: none;
 
+      &,
       &:hover {
         text-decoration: underline;
       }
@@ -206,6 +211,11 @@
       &::after {
         border-left-color: $active-color;
         right: -18px;
+      }
+
+      a,
+      a:hover {
+        cursor: default;
       }
     }
 
