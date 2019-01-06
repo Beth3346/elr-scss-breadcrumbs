@@ -11,7 +11,7 @@ a library of sass mixins
 Download node at [nodejs.org](http://nodejs.org) and install it, if you haven't already.
 
 ```sh
-npm install elr-scss-breadcrumbs --save
+npm install elr-scss-breadcrumb --save
 ```
 
 ## Dependencies
