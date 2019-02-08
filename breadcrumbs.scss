@@ -1,7 +1,11 @@
 @import 'src/main';
 
 .elr-breadcrumbs {
-  @include elr-breadcrumbs;
+  @include elr-breadcrumbs(
+    $config: (
+      separator: '/'
+    )
+  );
 }
 
 .elr-breadcrumbs-arrow {
