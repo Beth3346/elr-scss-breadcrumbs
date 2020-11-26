@@ -10,8 +10,8 @@ a scss mixin for breadcrumbs
 Download node at [nodejs.org](http://nodejs.org) and install it, if you haven't already.
 
 ```sh
-npm install elr-scss-breadcrumbs
-yarn add elr-scss-breadcrumbs
+npm install elr-scss-breadcrumb
+yarn add elr-scss-breadcrumb
 ```
 
 ## License
