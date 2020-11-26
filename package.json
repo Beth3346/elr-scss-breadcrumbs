@@ -19,7 +19,7 @@
     "node-sass": "^4.5.0",
     "path": "^0.12.7"
   },
-  "homepage": "http://www.elizabeth-rogers.com/elr-utilities/css.html",
+  "homepage": "https://elr-scss-breadcrumbs.netlify.app",
   "keywords": [
     "sass, css, mixins, breadcrumb"
   ],
