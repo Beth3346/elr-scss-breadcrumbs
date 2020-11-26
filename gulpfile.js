@@ -35,6 +35,12 @@ function clean() {
   return del(['./dist/css/']);
 }
 
+// Copy HTML
+function copyIndex() {
+  return gulp.src('./src/index.html')
+    .pipe(gulp.dest(paths.app))
+}
+
 // Watch files
 function watchFiles(done) {
   gulp.watch(['./**/*.scss', 'dist/index.html'], () => {
@@ -56,6 +62,7 @@ function watchFiles(done) {
       .pipe(gulp.dest(paths.css))
       .pipe(cleanCSS({ debug: true }))
       .pipe(gulp.dest(paths.css))
+      .pipe(copyIndex())
       .pipe(browserSyncReload(done));
   });
 }
@@ -77,10 +84,12 @@ gulp.task('default', () => {
     )
     .pipe(gulp.dest(paths.css))
     .pipe(cleanCSS({ debug: true }))
-    .pipe(gulp.dest(paths.css));
+    .pipe(gulp.dest(paths.css))
+    .pipe(copyIndex());
 });
 
-const watch = gulp.parallel(watchFiles, browserSync);
+const watch = gulp.parallel(copyIndex, watchFiles, browserSync);
 
 exports.clean = clean;
 exports.watch = watch;
+exports.copyIndex = copyIndex;
