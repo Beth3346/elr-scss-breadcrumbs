@@ -1,6 +1,10 @@
 @import 'src/main';
 
 .elr-breadcrumbs {
+  @include elr-breadcrumbs();
+}
+
+.elr-breadcrumbs-slash {
   @include elr-breadcrumbs(
     $config: (
       separator: '/'
@@ -10,4 +14,10 @@
 
 .elr-breadcrumbs-arrow {
   @include elr-breadcrumbs-arrow;
+}
+
+.elr-breadcrumbs,
+.elr-breadcrumbs-slash,
+.elr-breadcrumbs-arrow {
+  margin: 32px 0;
 }

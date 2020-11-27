@@ -1,99 +1,6 @@
 @import 'node_modules/elr-scss-functions/main';
+@import './triangle';
 // Breadcrumbs
-@mixin elr-triangle($config: ()) {
-  $config: extend(
-    (
-      direction: 'top',
-      base: 50px,
-      height: 'half',
-      color: #ccc
-    ),
-    $config
-  );
-
-  $direction: map-get($config, direction);
-  $base: map-get($config, base);
-  $height: map-get($config, height);
-  $color: map-get($config, color);
-
-  @if (
-    $direction ==
-      'top' or
-      $direction ==
-      'right' or
-      $direction ==
-      'bottom' or
-      $direction ==
-      'left'
-  ) {
-    @if ($height == 'half') {
-      $height: ($base / 2);
-    } @else if ($height == auto) {
-      $height: $base;
-    }
-  } @else if
-    (
-      $direction ==
-        'top-left' or
-        $direction ==
-        'top-right' or
-        $direction ==
-        'bottom-left' or
-        $direction ==
-        'bottom-right'
-    )
-  {
-    @if ($height == 'half' or $height == auto) {
-      $height: ($base / 2);
-    }
-  }
-  // width is divided by 2 because it's used twice !
-  $base: ($base / 2);
-  width: 0;
-  height: 0;
-
-  @if ($direction == 'top') {
-    // border-top
-    border-right: $base solid transparent;
-    border-bottom: $height solid $color;
-    border-left: $base solid transparent;
-  } @else if ($direction == 'bottom') {
-    border-top: $height solid $color;
-    border-right: $base solid transparent;
-    // border-bottom
-    border-left: $base solid transparent;
-  } @else if ($direction == 'left') {
-    border-top: $base solid transparent;
-    border-right: $height solid $color;
-    border-bottom: $base solid transparent;
-    // border-left
-  } @else if ($direction == 'right') {
-    border-top: $base solid transparent;
-    // border-right
-    border-bottom: $base solid transparent;
-    border-left: $height solid $color;
-  } @else if ($direction == 'top-left') {
-    border-top: $height solid $color;
-    border-right: $base solid transparent;
-    border-bottom: $height solid transparent;
-    border-left: $base solid $color;
-  } @else if ($direction == 'top-right') {
-    border-top: $height solid $color;
-    border-right: $base solid $color;
-    border-bottom: $height solid transparent;
-    border-left: $base solid transparent;
-  } @else if ($direction == 'bottom-left') {
-    border-top: $height solid transparent;
-    border-right: $base solid transparent;
-    border-bottom: $height solid $color;
-    border-left: $base solid $color;
-  } @else if ($direction == 'bottom-right') {
-    border-top: $height solid transparent;
-    border-right: $base solid $color;
-    border-bottom: $height solid $color;
-    border-left: $base solid transparent;
-  }
-}
 
 @mixin elr-breadcrumbs-arrow($config: ()) {
   $config: extend(
@@ -101,7 +8,8 @@
       color: lighten(#1976d2, 10%),
       active-color: #1976d2,
       text-color: #fff,
-      border-color: #1976d2
+      border-color: #1976d2,
+      border-radius: 5px,
     ),
     $config
   );
@@ -110,10 +18,13 @@
   $active-color: map-get($config, active-color);
   $text-color: map-get($config, text-color);
   $border-color: map-get($config, border-color);
+  $border-radius: map-get($config, border-radius);
 
   margin: 0;
   padding: 0;
   display: flex;
+  background-color: $color;
+  border-radius: $border-radius;
 
   li {
     padding: 0;
@@ -124,6 +35,7 @@
     height: 37px;
     text-align: center;
     position: relative;
+    border-radius: $border-radius 0 0 $border-radius;
 
     &::before,
     &::after {
