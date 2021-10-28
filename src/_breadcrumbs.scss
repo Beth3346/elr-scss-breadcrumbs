@@ -1,9 +1,7 @@
-@import 'node_modules/elr-scss-functions/main';
-
 @mixin elr-breadcrumbs($config: ()) {
   $config: extend(
     (
-      separator: '>',
+      separator: ">",
       color: #1976d2,
       text-color: #333,
     ),
@@ -31,7 +29,7 @@
 
     &:last-child {
       &::after {
-        content: '';
+        content: "";
       }
     }
 

@@ -1,5 +1,4 @@
-@import 'node_modules/elr-scss-functions/main';
-@import './triangle';
+@import "./triangle";
 // Breadcrumbs
 
 @mixin elr-breadcrumbs-arrow($config: ()) {
@@ -41,13 +40,13 @@
     &::after {
       @include elr-triangle(
         $config: (
-          direction: 'right',
+          direction: "right",
           base: 37px,
           height: 18px,
-          color: $color
+          color: $color,
         )
       );
-      content: '';
+      content: "";
       display: block;
       position: absolute;
       top: 0;

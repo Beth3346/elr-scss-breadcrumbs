@@ -1,12 +1,12 @@
-@import 'node_modules/elr-scss-functions/main';
+@use "sass:math";
 
 @mixin elr-triangle($config: ()) {
   $config: extend(
     (
-      direction: 'top',
+      direction: "top",
       base: 50px,
-      height: 'half',
-      color: #ccc
+      height: "half",
+      color: #ccc,
     ),
     $config
   );
@@ -18,76 +18,76 @@
 
   @if (
     $direction ==
-      'top' or
+      "top" or
       $direction ==
-      'right' or
+      "right" or
       $direction ==
-      'bottom' or
+      "bottom" or
       $direction ==
-      'left'
+      "left"
   ) {
-    @if ($height == 'half') {
-      $height: ($base / 2);
+    @if ($height == "half") {
+      $height: math.div($base, 2);
     } @else if ($height == auto) {
       $height: $base;
     }
   } @else if
     (
       $direction ==
-        'top-left' or
+        "top-left" or
         $direction ==
-        'top-right' or
+        "top-right" or
         $direction ==
-        'bottom-left' or
+        "bottom-left" or
         $direction ==
-        'bottom-right'
+        "bottom-right"
     )
   {
-    @if ($height == 'half' or $height == auto) {
-      $height: ($base / 2);
+    @if ($height == "half" or $height == auto) {
+      $height: math.div($base, 2);
     }
   }
   // width is divided by 2 because it's used twice !
-  $base: ($base / 2);
+  $base: math.div($base, 2);
   width: 0;
   height: 0;
 
-  @if ($direction == 'top') {
+  @if ($direction == "top") {
     // border-top
     border-right: $base solid transparent;
     border-bottom: $height solid $color;
     border-left: $base solid transparent;
-  } @else if ($direction == 'bottom') {
+  } @else if ($direction == "bottom") {
     border-top: $height solid $color;
     border-right: $base solid transparent;
     // border-bottom
     border-left: $base solid transparent;
-  } @else if ($direction == 'left') {
+  } @else if ($direction == "left") {
     border-top: $base solid transparent;
     border-right: $height solid $color;
     border-bottom: $base solid transparent;
     // border-left
-  } @else if ($direction == 'right') {
+  } @else if ($direction == "right") {
     border-top: $base solid transparent;
     // border-right
     border-bottom: $base solid transparent;
     border-left: $height solid $color;
-  } @else if ($direction == 'top-left') {
+  } @else if ($direction == "top-left") {
     border-top: $height solid $color;
     border-right: $base solid transparent;
     border-bottom: $height solid transparent;
     border-left: $base solid $color;
-  } @else if ($direction == 'top-right') {
+  } @else if ($direction == "top-right") {
     border-top: $height solid $color;
     border-right: $base solid $color;
     border-bottom: $height solid transparent;
     border-left: $base solid transparent;
-  } @else if ($direction == 'bottom-left') {
+  } @else if ($direction == "bottom-left") {
     border-top: $height solid transparent;
     border-right: $base solid transparent;
     border-bottom: $height solid $color;
     border-left: $base solid $color;
-  } @else if ($direction == 'bottom-right') {
+  } @else if ($direction == "bottom-right") {
     border-top: $height solid transparent;
     border-right: $base solid $color;
     border-bottom: $height solid $color;
