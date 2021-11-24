@@ -250,11 +250,9 @@
 
     &.active,
     a {
-      font-size: to-rems(14px);
+      font-size: 14px;
       padding-top: 0;
       padding-bottom: 0;
-      padding-right: 15px;
-      padding-left: 30px;
       line-height: 36px;
     }
 
@@ -263,6 +261,8 @@
       text-decoration: none;
       color: inherit;
       height: 100%;
+      padding-right: $base-fontsize;
+      padding-left: $base-fontsize * 2;
 
       &:hover {
         text-decoration: none;

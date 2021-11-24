@@ -19,4 +19,6 @@
 /test
 /Gruntfile.js
 /.husky
+/.github
+/.parcel-cache
 # /gulpfile.js
