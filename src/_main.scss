@@ -1,101 +1,6 @@
-@use "sass:math";
 @import "elr-scss-functions/src/main";
 @import "elr-scss-config/src/main";
-
-@mixin elr-triangle($config: ()) {
-  $config: extend(
-    (
-      direction: "top",
-      base: 50px,
-      height: "half",
-      color: $light-gray,
-    ),
-    $config
-  );
-
-  $direction: map-get($config, direction);
-  $base: map-get($config, base);
-  $height: map-get($config, height);
-  $color: map-get($config, color);
-
-  @if (
-    $direction ==
-      "top" or
-      $direction ==
-      "right" or
-      $direction ==
-      "bottom" or
-      $direction ==
-      "left"
-  ) {
-    @if ($height == "half") {
-      $height: math.div($base, 2);
-    } @else if ($height == auto) {
-      $height: $base;
-    }
-  } @else if
-    (
-      $direction ==
-        "top-left" or
-        $direction ==
-        "top-right" or
-        $direction ==
-        "bottom-left" or
-        $direction ==
-        "bottom-right"
-    )
-  {
-    @if ($height == "half" or $height == auto) {
-      $height: math.div($base, 2);
-    }
-  }
-  // width is divided by 2 because it's used twice !
-  $base: math.div($base, 2);
-  width: 0;
-  height: 0;
-
-  @if ($direction == "top") {
-    // border-top
-    border-right: $base solid transparent;
-    border-bottom: $height solid $color;
-    border-left: $base solid transparent;
-  } @else if ($direction == "bottom") {
-    border-top: $height solid $color;
-    border-right: $base solid transparent;
-    // border-bottom
-    border-left: $base solid transparent;
-  } @else if ($direction == "left") {
-    border-top: $base solid transparent;
-    border-right: $height solid $color;
-    border-bottom: $base solid transparent;
-    // border-left
-  } @else if ($direction == "right") {
-    border-top: $base solid transparent;
-    // border-right
-    border-bottom: $base solid transparent;
-    border-left: $height solid $color;
-  } @else if ($direction == "top-left") {
-    border-top: $height solid $color;
-    border-right: $base solid transparent;
-    border-bottom: $height solid transparent;
-    border-left: $base solid $color;
-  } @else if ($direction == "top-right") {
-    border-top: $height solid $color;
-    border-right: $base solid $color;
-    border-bottom: $height solid transparent;
-    border-left: $base solid transparent;
-  } @else if ($direction == "bottom-left") {
-    border-top: $height solid transparent;
-    border-right: $base solid transparent;
-    border-bottom: $height solid $color;
-    border-left: $base solid $color;
-  } @else if ($direction == "bottom-right") {
-    border-top: $height solid transparent;
-    border-right: $base solid $color;
-    border-bottom: $height solid $color;
-    border-left: $base solid transparent;
-  }
-}
+@import "elr-scss-shapes/src/main";
 
 @mixin elr-breadcrumbs($config: ()) {
   $config: extend(
@@ -124,6 +29,7 @@
       padding-left: 8px;
       padding-right: 12px;
       color: rgba($color, 0.7);
+      font-weight: 900;
     }
 
     &:last-child {
