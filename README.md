@@ -1,5 +1,7 @@
-# elr-scss-breadcrumbs
+# Breadcrumbs
 
+[![npm version](http://img.shields.io/npm/v/elr-scss-breadcrumb.svg)](https://www.npmjs.org/package/elr-scss-breadcrumb)
+[![Build Status](https://github.com/elr-scss-breadcrumb/workflows/CI/badge.svg)](https://github.com/elr-scss-breadcrumb/actions?workflow=CI)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm](https://img.shields.io/npm/dm/elr-scss-breadcrumb.svg?style=flat)]()
 
@@ -12,6 +14,8 @@ Download node at [nodejs.org](http://nodejs.org) and install it, if you haven't 
 ```sh
 npm install elr-scss-breadcrumb
 ```
+
+or
 
 ```sh
 yarn add elr-scss-breadcrumb
