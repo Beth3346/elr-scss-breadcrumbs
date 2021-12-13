@@ -1,7 +1,7 @@
 # Breadcrumbs
 
 [![npm version](http://img.shields.io/npm/v/elr-scss-breadcrumb.svg)](https://www.npmjs.org/package/elr-scss-breadcrumb)
-[![CI](https://github.com/Beth3346/elr-scss-breadcrumb/actions/workflows/node.js.yml/badge.svg)](https://github.com/Beth3346/elr-scss-breadcrumb/actions/workflows/node.js.yml)
+[![CI](https://github.com/Beth3346/elr-scss-breadcrumbs/actions/workflows/node.js.yml/badge.svg)](https://github.com/Beth3346/elr-scss-breadcrumbs/actions/workflows/node.js.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm](https://img.shields.io/npm/dm/elr-scss-breadcrumb.svg?style=flat)](https://www.npmjs.org/package/elr-scss-breadcrumb)
 [![last commit](https://img.shields.io/github/last-commit/Beth3346/elr-scss-breadcrumbs.svg)](https://github.com/Beth3346/elr-scss-breadcrumbs)
